@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revica — Innovate. Build. Evolve.</title>
+  <meta name="description" content="Revica - Fullstack web development, product design, and AI solutions." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Lexend:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-dark': '#0b0c10',
+            'card-dark': '#0f1115',
+            'muted-text': '#9aa3b2',
+            'revica-purple': { DEFAULT: '#a87cf3', dark: '#7b5bf0' }
+          },
+          fontFamily: { sans: ['Inter'], heading: ['Lexend', 'Inter'] },
+          boxShadow: { 'purple-glow': '0 10px 40px rgba(123,91,240,0.25)', 'card-glow': '0 5px 20px rgba(0,0,0,0.15)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: #eaf0ff;
+      background-image: radial-gradient(1200px 600px at 10% 10%, rgba(168, 124, 243, 0.08), transparent 8%);
+    }
+
+    .backdrop-blur-custom {
+      backdrop-filter: blur(6px);
+      background-color: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all .7s cubic-bezier(.2, .9, .25, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #a87cf3, #7b5bf0);
+      color: white;
+      font-weight: 700;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      box-shadow: 0 10px 40px rgba(123, 91, 240, 0.25);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #9aa3b2;
+      font-weight: 700;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      border-color: #a87cf3;
+      color: white;
+    }
+
+    .cta-submit {
+      background: linear-gradient(to right, #a87cf3, #7b5bf0);
+      color: white;
+      font-weight: 700;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      box-shadow: 0 10px 40px rgba(123, 91, 240, 0.25);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: .75rem;
+      border-radius: .75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: transparent;
+      color: white;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #a87cf3;
+      box-shadow: 0 0 8px #a87cf3;
+    }
+
+    .feature-card,
+    .process-card,
+    .info-card,
+    .team-member-card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: #0f1115;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover,
+    .process-card:hover,
+    .info-card:hover {
+      transform: scale(1.02);
+      border-color: #a87cf3;
+      box-shadow: 0 10px 40px rgba(123, 91, 240, 0.25);
+    }
+
+    .team-avatar {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 9999px;
+      background: linear-gradient(to br, #a87cf3, #7b5bf0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin: 0 auto .75rem auto;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-dark">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <header class="fixed left-0 right-0 top-4 z-40 px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between p-3 rounded-xl backdrop-blur-custom shadow-lg">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-12 h-12 rounded-xl bg-gradient-to-br from-revica-purple to-revica-purple-dark flex items-center justify-center font-extrabold text-white text-xl font-heading">
+            R</div>
+          <div class="leading-tight">
+            <div class="font-bold text-lg font-heading">Revica</div>
+            <div class="text-xs text-muted-text hidden sm:block">Innovate • Build • Evolve</div>
+          </div>
+        </div>
+        <nav class="hidden lg:block">
+          <ul class="flex space-x-6 items-center">
+            <li><a href="#hero" class="text-muted-text hover:text-white font-semibold transition-colors">Home</a></li>
+            <li><a href="#features"
+                class="text-muted-text hover:text-white font-semibold transition-colors">Services</a></li>
+            <li><a href="#process" class="text-muted-text hover:text-white font-semibold transition-colors">Process</a>
+            </li>
+            <!-- <li><a href="#successes" class="text-muted-text hover:text-white font-semibold transition-colors">Success</a></li> -->
+            <!-- <li><a href="#team" class="text-muted-text hover:text-white font-semibold transition-colors">Team</a></li> -->
+            <li><a href="#contact" class="text-muted-text hover:text-white font-semibold transition-colors">Contact</a>
+            </li>
+            <li><a href="#contact"
+                class="px-4 py-2 rounded-lg text-white font-bold bg-gradient-to-r from-revica-purple to-revica-purple-dark hover:shadow-purple-glow transition-all duration-300">Get
+                Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-36 pb-16 md:pb-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="p-4">
+        <span
+          class="inline-block px-4 py-2 mb-4 rounded-full bg-revica-purple/10 text-revica-purple font-bold text-sm">Startup
+          Studio</span>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tighter mb-4 font-heading">
+          We craft modern fullstack web experiences & AI-powered products.
+        </h1>
+        <p class="text-xl text-muted-text max-w-xl mb-8">
+          At Revica, we help founders and startups build scalable digital products, combining fullstack engineering,
+          intelligent design, and soon AI agents to accelerate growth.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <a href="#contact" class="btn-primary">Get Started</a>
+          <a href="#features" class="btn-ghost">Our Services</a>
+        </div>
+      </div>
+      <aside class="mockup p-4 lg:p-6 rounded-2xl bg-card-dark border border-white/10 shadow-purple-glow reveal">
+        <div
+          class="mockup-screen h-96 lg:h-[450px] rounded-xl bg-gradient-to-b from-[#081226] to-[#07101a] flex flex-col overflow-hidden items-center justify-center text-revica-purple font-bold text-xl">
+          <!-- Mockup / Dashboard Preview -->
+          <img src="/RevicaHeroSection.png" alt="">
+        </div>
+      </aside>
+    </section>
+
+    <!-- Services Section -->
+    <section id="features" class="py-16 md:py-24">
+      <div class="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        <div>
+          <h2 class="text-4xl font-extrabold font-heading mb-2">What we do</h2>
+          <p class="text-lg text-muted-text">Fullstack development, product design, and upcoming AI solutions for
+            startups.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="feature-card reveal">
+          <h3 class="text-2xl font-bold text-revica-purple mb-3 font-heading">Fullstack Development</h3>
+          <p class="text-muted-text">Web apps, APIs, and scalable architectures — from idea to production-ready
+            platforms.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:100ms;">
+          <h3 class="text-2xl font-bold text-revica-purple mb-3 font-heading">Product Design</h3>
+          <p class="text-muted-text">User-centered design, rapid prototyping, and intuitive UI/UX for digital success.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:200ms;">
+          <h3 class="text-2xl font-bold text-revica-purple mb-3 font-heading">AI Agents (Coming Soon)</h3>
+          <p class="text-muted-text">Smart automation, recommendations, and AI-powered workflows to optimize your
+            product impact.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-16 md:py-24">
+      <h2 class="text-4xl font-extrabold font-heading mb-6 text-center">Our Process</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="process-card reveal">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Idea & Concept</h3>
+          <p class="text-muted-text">We understand your vision and define project requirements clearly.</p>
+        </div>
+        <div class="process-card reveal" style="transition-delay:100ms;">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Design & Prototype</h3>
+          <p class="text-muted-text">UX/UI design and interactive prototypes for validation and early feedback.</p>
+        </div>
+        <div class="process-card reveal" style="transition-delay:200ms;">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Development & Launch</h3>
+          <p class="text-muted-text">Fullstack implementation, testing, and launch with continuous support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Section -->
+    <!-- <section id="successes" class="py-16 md:py-24">
+      <h2 class="text-4xl font-extrabold font-heading mb-6 text-center">Success Stories</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="info-card reveal">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Project A</h3>
+          <p class="text-muted-text">Delivered a scalable platform with 10k+ active users within 6 months.</p>
+        </div>
+        <div class="info-card reveal" style="transition-delay:100ms;">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Project B</h3>
+          <p class="text-muted-text">Designed a UX overhaul that increased conversion by 35%.</p>
+        </div>
+        <div class="info-card reveal" style="transition-delay:200ms;">
+          <h3 class="text-xl font-bold text-revica-purple mb-2 font-heading">Project C</h3>
+          <p class="text-muted-text">Built an MVP with AI features, achieving investor interest in record time.</p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Vision & Mission Section (Replaces Team) -->
+    <section id="vision" class="py-16 md:py-24 bg-deep-dark">
+      <div class="max-w-5xl mx-auto text-center px-4">
+
+        <!-- Section Header -->
+        <span
+          class="inline-block px-4 py-2 mb-4 rounded-full bg-white/5 text-white font-bold text-sm border border-white/10">
+          Our Vision & Mission
+        </span>
+        <h2 class="text-4xl font-extrabold font-heading mb-4">Shaping Syria's Tech Future</h2>
+        <p class="text-lg text-muted-text mb-12">
+          At Revica, we strive to create innovative, high-quality digital products that make technology accessible,
+          seamless, and impactful. We aim to drive Syria towards a modern, digital, and innovative ecosystem while
+          preparing for the future of AI-driven solutions.
+        </p>
+
+        <!-- Vision & Mission Cards -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Vision -->
+          <div class="p-6 rounded-xl bg-card-dark border border-white/5 shadow-card-glow reveal">
+            <div class="text-3xl font-extrabold text-revica-purple mb-3 font-heading">Vision</div>
+            <p class="text-muted-text text-sm">
+              To be a leading force in Syria’s tech ecosystem, driving the country towards a modern, digital, and
+              innovative future.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div class="p-6 rounded-xl bg-card-dark border border-white/5 shadow-card-glow reveal"
+            style="transition-delay: 100ms;">
+            <div class="text-3xl font-extrabold text-revica-purple mb-3 font-heading">Mission</div>
+            <p class="text-muted-text text-sm">
+              We create high-quality, innovative digital products with a focus on listening to clients, embracing new
+              technologies, and delivering solutions that truly stand out.
+            </p>
+          </div>
+
+          <!-- Core Values -->
+          <div class="p-6 rounded-xl bg-card-dark border border-white/5 shadow-card-glow reveal"
+            style="transition-delay: 200ms;">
+            <div class="text-3xl font-extrabold text-revica-purple mb-3 font-heading">Core Values</div>
+            <ul class="text-muted-text text-sm list-disc list-inside space-y-1">
+              <li>Listening to clients and understanding their needs</li>
+              <li>Innovation and creative problem-solving</li>
+              <li>High-quality, reliable solutions delivered with speed</li>
+              <li>Openness to new technologies and trends</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section id="contact" class="py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+        <div>
+          <h2 class="text-4xl font-extrabold font-heading mb-3">Get in touch</h2>
+          <p class="text-lg text-muted-text mb-6">Tell us about your idea and we'll suggest the best path forward.</p>
+          <a href="mailto:revicatech@gmail.com" class="btn-primary">revicatech@gmail.com</a>
+        </div> -->
+        <!-- <div>
+          <form id="contactForm" class="flex flex-col gap-4 reveal p-6 rounded-2xl bg-card-dark border border-white/10 shadow-card-glow">
+            <input id="name" class="form-input" placeholder="Full name" required />
+            <input id="email" type="email" class="form-input" placeholder="Email address" required />
+            <textarea id="message" rows="5" class="form-input" placeholder="Briefly describe your project" required></textarea>
+            <button class="cta-submit mt-2" type="submit">Send Message</button>
+          </form>
+        </div> -->
+      <!-- </div>
+    </section> -->
+
+    <section id="contact" class="py-16 md:py-24 flex justify-center items-center text-center">
+      <div>
+        <h2 class="text-4xl font-extrabold font-heading mb-3">Get in touch</h2>
+        <p class="text-lg text-muted-text mb-6">Tell us about your idea and we'll suggest the best path forward.</p>
+        <a href="mailto:revicatech@gmail.com" class="btn-primary inline-block">revicatech@gmail.com</a>
+      </div>
+    </section>
+
+
+    <footer
+      class="mt-12 py-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-sm text-white font-semibold">
+      <div>© <span id="year"></span> Revica — All rights reserved</div>
+      <div class="text-muted-text mt-2 sm:mt-0">Designed & built with care</div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const reveals = document.querySelectorAll('.reveal'); const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }) }, { threshold: 0.12 }); reveals.forEach(r => obs.observe(r));
+    document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); alert('Thanks! We will reach out soon.'); e.target.reset(); });
+  </script>
+</body>
+
+</html>
